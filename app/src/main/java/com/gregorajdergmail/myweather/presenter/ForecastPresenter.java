@@ -5,8 +5,8 @@ import com.gregorajdergmail.myweather.presenter.mapper.ForecastListMapper;
 import com.gregorajdergmail.myweather.presenter.viewObject.ForecastVO;
 import com.gregorajdergmail.myweather.util.Log;
 
-import rx.Observer;
 import rx.Subscription;
+import rx.functions.Action1;
 import rx.subscriptions.Subscriptions;
 
 
@@ -30,24 +30,12 @@ public class ForecastPresenter {
 
         subscription = model.getForecast(id)
                 .map(forecastListMapper)
-                .subscribe(new Observer<ForecastVO>() {
+                .subscribe(new Action1<ForecastVO>() {
 
                     @Override
-                    public void onCompleted() {
-                        Log.d();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d();
-                    }
-
-                    @Override
-                    public void onNext(ForecastVO data) {
-
+                    public void call(ForecastVO forecastVO) {
                         forecastVO.notifyChange();
                         subscription.unsubscribe();
-
                         Log.d();
                     }
                 });
