@@ -44,14 +44,10 @@ public class ForecastPresenter {
 
                     @Override
                     public void onNext(ForecastVO data) {
-//                        forecastVO = data;
-
-//                        forecastVO.setList(data.getList());
-//                        forecastVO.setCityId(data.getCityId());
-//                        forecastVO.setCountry(data.getCountry());
-//                        forecastVO.setCityName(data.getCityName());
 
                         forecastVO.notifyChange();
+                        subscription.unsubscribe();
+
                         Log.d();
                     }
                 });

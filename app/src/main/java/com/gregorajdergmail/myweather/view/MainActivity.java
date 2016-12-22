@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity implements ForecastListFragm
             mainFragmentManager = getSupportFragmentManager();
             initListFragment();
         }
-
-        if (mainFragmentManager==null) Log.d();
     }
 
     private void initListFragment() {
